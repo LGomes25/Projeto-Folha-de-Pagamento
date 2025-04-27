@@ -2,14 +2,16 @@ package model;
 
 import java.time.LocalDate;
 
-public class Dependente extends Pessoa {
+import util.TipoDep;
+
+public class Dependente extends Pessoa{
 
 	//Atributos
 	private Integer id;
-	private String parentesco;
+	private TipoDep parentesco;
 
 	//Construtor
-	public Dependente(String nome, String cpf, LocalDate dtNasc, String parentesco) {
+	public Dependente(String nome, String cpf, LocalDate dtNasc, TipoDep parentesco) {
 		super(nome, cpf, dtNasc);
 		this.parentesco = parentesco;
 	}
@@ -21,11 +23,11 @@ public class Dependente extends Pessoa {
 	}
 
 	//Getters Setters
-	public String getParentesco() {
+	public TipoDep getParentesco() {
 		return parentesco;
 	}
 
-	public void setParentesco(String parentesco) {
+	public void setParentesco(TipoDep parentesco) {
 		this.parentesco = parentesco;
 	}
 
