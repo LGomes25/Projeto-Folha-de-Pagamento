@@ -6,6 +6,7 @@ import java.util.List;
 
 import model.Dependente;
 import model.Funcionario;
+import util.TipoDep;
 
 public class RodaFolha {
 
@@ -19,11 +20,11 @@ public class RodaFolha {
 		Funcionario fun5 = new Funcionario("Gabriel", "55566677789", LocalDate.of(2001, 12, 25), 4100.00);
 		
 		//instanciamento dependentes
-		Dependente dep1 = new Dependente("José", "77788899945", LocalDate.of(2019, 6, 30), "FILHO");
-		Dependente dep2 = new Dependente("Ana", "12345678912", LocalDate.of(2015, 11, 20), "SOBRINHO");
-		Dependente dep3 = new Dependente("Lucas", "23456789123", LocalDate.of(2010, 3, 5), "OUTROS");
-		Dependente dep4 = new Dependente("Beatriz", "34567891234", LocalDate.of(2017, 8, 15), "FILHO");
-		Dependente dep5 = new Dependente("Gabriel", "45678912345", LocalDate.of(2014, 9, 25), "SOBRINHO");
+		Dependente dep1 = new Dependente("José", "66655588812", LocalDate.of(2017, 02, 20), TipoDep.FILHO);
+		Dependente dep2 = new Dependente("Ana", "12345678912", LocalDate.of(2015, 11, 20), TipoDep.SOBRINHO);
+		Dependente dep3 = new Dependente("Lucas", "23456789123", LocalDate.of(2010, 3, 5), TipoDep.OUTROS);
+		Dependente dep4 = new Dependente("Beatriz", "34567891234", LocalDate.of(2017, 8, 15), TipoDep.FILHO);
+		Dependente dep5 = new Dependente("Gabriel", "45678912345", LocalDate.of(2014, 9, 25), TipoDep.SOBRINHO);
 				
 		//Impressao de funcionarios
 //		System.out.println(fun1);
