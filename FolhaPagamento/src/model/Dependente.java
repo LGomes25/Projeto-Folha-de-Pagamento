@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class Dependente extends Pessoa {
 
 	//Atributos
+	private Integer id;
 	private String parentesco;
 
 	//Construtor
@@ -26,6 +27,14 @@ public class Dependente extends Pessoa {
 
 	public void setParentesco(String parentesco) {
 		this.parentesco = parentesco;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	
