@@ -1,6 +1,8 @@
 package app;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Dependente;
 import model.Funcionario;
@@ -24,18 +26,39 @@ public class RodaFolha {
 		Dependente dep5 = new Dependente("Gabriel", "45678912345", LocalDate.of(2014, 9, 25), "SOBRINHO");
 				
 		//Impressao de funcionarios
-		System.out.println(fun1);
-		System.out.println(fun2);
-		System.out.println(fun3);
-		System.out.println(fun4);
-		System.out.println(fun5);
+//		System.out.println(fun1);
+//		System.out.println(fun2);
+//		System.out.println(fun3);
+//		System.out.println(fun4);
+//		System.out.println(fun5);
 		
 		//impressao de dependentes
-		System.out.println(dep1);
-		System.out.println(dep2);
-		System.out.println(dep3);
-		System.out.println(dep4);
-		System.out.println(dep5);
+//		System.out.println(dep1);
+//		System.out.println(dep2);
+//		System.out.println(dep3);
+//		System.out.println(dep4);
+//		System.out.println(dep5);
+		
+		//criando lista de dependente e funcionario
+		List<Funcionario> funcionarios = new ArrayList<>();
+		List<Dependente> dependentes = new ArrayList<>();
+		
+		//Carregar listas funcionario
+		funcionarios.add(fun1);
+		funcionarios.add(fun2);
+		funcionarios.add(fun3);
+		funcionarios.add(fun4);
+		funcionarios.add(fun5);
+		
+		//Carregar listas dependentes
+		dependentes.add(dep1);
+		dependentes.add(dep2);
+		dependentes.add(dep3);
+		dependentes.add(dep4);
+		dependentes.add(dep5);
+		
+		System.out.println(funcionarios);
+		System.out.println(dependentes);
 		
 		
 	}
