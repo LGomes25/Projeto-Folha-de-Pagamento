@@ -1,6 +1,9 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Funcionario extends Pessoa {
 
@@ -10,6 +13,9 @@ public class Funcionario extends Pessoa {
 	private Double descontoInss;
 	private Double descontoIR;
 	private int contDep;
+	private static Set<String> cpfUnico = new HashSet<>();//garantir unicidade <--Não funciona como deveria
+	private static Set<String> cpfDuplicado = new HashSet<>();//Listar duplicações
+
 
 	// Construtor
 	public Funcionario(String nome, String cpf, LocalDate dtNasc, Double salarioBruto) {
@@ -66,6 +72,27 @@ public class Funcionario extends Pessoa {
 
 	public void setContDep(int contDep) {
 		this.contDep = contDep;
+	}
+
+	public static Set<String> getCpfUnico() {
+		return cpfUnico;
+	}
+
+	public static Set<String> getCpfDuplicado() {
+		return cpfDuplicado;
+	}
+
+	//Metodo Implementa Interface heranca <--não funciona como deveria
+	@Override
+	public String comparaCpf(Pessoa cpfComp) {
+		String retorno = null;
+		cpfUnico.add(cpf);
+		if (cpfUnico.contains(cpf)) {
+			retorno = "duplicado";
+		}else {
+			retorno = "unico";
+		}
+		return retorno;
 	}
 
 }

@@ -2,7 +2,9 @@ package model;
 
 import java.time.LocalDate;
 
-public abstract class Pessoa {
+import util.ValidaCpf;
+
+public abstract class Pessoa implements ValidaCpf {
 
 	//Atributos
 	protected String nome;
@@ -46,6 +48,8 @@ public abstract class Pessoa {
 		this.dtNasc = dtNasc;
 	}
 
+
+	
 	
 	
 	
