@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import model.Dependente;
 import model.Funcionario;
+import model.Pessoa;
 import util.TipoDep;
 
 public class RodaFolha {
@@ -33,52 +34,27 @@ public class RodaFolha {
 		//criando lista de dependente e funcionario
 		List<Funcionario> funcs = new ArrayList<>();
 		List<Dependente> deps = new ArrayList<>();
+		List<Pessoa> pessoas = new ArrayList<>();
 		
 		
-		//Carregar listas funcionario
-		funcs.add(fun1);
-		funcs.add(fun2);
-		funcs.add(fun3);
-		funcs.add(fun4);
-		funcs.add(fun5);
-		funcs.add(fun6);
-		
-		//Carregar listas dependentes
-		deps.add(dep1);
-		deps.add(dep2);
-		deps.add(dep3);
-		deps.add(dep4);
-		deps.add(dep5);
-		deps.add(dep6);
-		
-		//apresentando os dados carregados chamada função compara cpf
-//		for (Funcionario func : funcs) {
-//			System.out.println(func.toString());
-//		}
-		
-//		System.out.println(fun1.comparaCpf(fun1)); <--verificar motivo pelo qual não funciona
+		//Carregar listas funcionario, dependente e pessoa
+		funcs.add(fun1); funcs.add(fun2); funcs.add(fun3); funcs.add(fun4); funcs.add(fun5); funcs.add(fun6); 
+		deps.add(dep1); deps.add(dep2); deps.add(dep3); deps.add(dep4); deps.add(dep5); deps.add(dep6); 
+		pessoas.add(fun1); pessoas.add(fun2); pessoas.add(fun3); pessoas.add(fun4); pessoas.add(fun5); pessoas.add(fun6);
+		pessoas.add(dep1);pessoas.add(dep2); pessoas.add(dep3); pessoas.add(dep4); pessoas.add(dep5); pessoas.add(dep6);
 
-		
+		//		System.out.println(fun1.comparaCpf(fun1)); <--verificar motivo pelo qual não funciona
+		 
 		//Inicio de menu
 		
 		Scanner sc = new Scanner(System.in);
 		int op=0;//escolha para menus
-		boolean validacao = false;
 		
 		while (op!=9) {
 			util.Menu.principal(); //chama o menu pricipal
-			while (validacao==false) {
-				try {
-					op = sc.nextInt();
-					//sc.nextLine();// <-teste inicial ok verificar se pode ser removido
-					validacao=true;
-				} catch (Exception e) {
-					System.out.println("Opção escolhida Inválida");
-					System.out.println("Digite apenas números");
-					sc.nextLine();//limpar buffer (loop continuo)
-				}
-			}
-			validacao=false;
+			
+			op=util.Menu.validaOp(sc); //chama leitura aceitando apenas numeros
+			
 			switch (op) {
 			case 1:
 				System.out.println("Teste 1");
@@ -88,8 +64,8 @@ public class RodaFolha {
 				System.out.println("Teste 2");
 				break;
 				
-			case 3:
-				System.out.println("Teste 3");
+			case 3: //Chama o menu de listas
+				util.Menu.sub3(sc, funcs, deps, pessoas);
 				break;
 				
 			case 4:
@@ -100,8 +76,8 @@ public class RodaFolha {
 				System.out.println("Teste 5");
 				break;
 				
-			case 9:
-				System.out.println("Teste 9");
+			case 9: //encerra o programa amigavelmente
+				op = util.Menu.sub9(sc);
 				break;
 				
 			default:
