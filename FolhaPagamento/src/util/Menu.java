@@ -1,17 +1,23 @@
 package util;
 
+import java.util.List;
+import java.util.Scanner;
+
+import model.Dependente;
+import model.Funcionario;
+import model.Pessoa;
+
 public class Menu {
 
 	public static void principal() {
-		System.out.println("============= InteliFolha =============");
+		System.out.println("=============== InteliFolha ===============");
 		System.out.println("1 - Carregar arquivo externo (.csv)");
 		System.out.println("2 - Cadastrar novo Funcionário manualmente");
-		System.out.println("3 - Visualizar istas");
+		System.out.println("3 - Visualizar Listas");
 		System.out.println("4 - Gerar arquivo (.csv)");
 		System.out.println("5 - Enviar listas para Banco de Dados");
-		System.out.println("6 - sair");
-		System.out.println("=======================================");
-		System.out.println("Escolha uma opção: ");
+		System.out.println("9 - Sair");
+		System.out.println("===========================================");
 	}
 	
 	//Carregar arquivo externo (.csv)
@@ -25,8 +31,46 @@ public class Menu {
 	}
 	
 	//Visualizar istas
-	public static void sub3() {
-		System.out.println("Em Desenvolvimento...");
+	public static void sub3(Scanner sc, List<Funcionario> funcionarios, List<Dependente> dependentes, List<Pessoa> pessoas) {
+		System.out.println("=============== InteliFolha ===============");
+		System.out.println("1 - Listar Funcionários");
+		System.out.println("2 - Listar Dependentes");
+		System.out.println("3 - Listar Todos");
+		System.out.println("9 - Retornar ao Menu Principal");
+		System.out.println("===========================================");
+		int op = validaOp(sc);
+		switch (op) {
+			case 1: //apresenta a lista de funcionarios
+				System.out.println("============================== InteliFolha ==============================");
+				System.out.println("--------------------------- Lista Funcionarios ---------------------------");
+				for (Funcionario func : funcionarios) {
+					System.out.println(func.toString());
+				}
+				System.out.println("=========================================================================\n");
+				break;
+			case 2:  //apresenta a lista de dependentes
+				System.out.println("============================== InteliFolha ==============================");
+				System.out.println("--------------------------- Lista Dependentes ----------------------------");
+				for (Dependente dep : dependentes) {
+					System.out.println(dep.toString());
+				}
+				System.out.println("=========================================================================\n");
+				break;
+			case 3:  //apresenta a lista de pessoas
+				System.out.println("============================== InteliFolha ==============================");
+				System.out.println("------------------------------ Lista Geral ------------------------------");
+				for (Pessoa pessoa : pessoas) {
+					System.out.println(pessoa.toString());
+				}
+				System.out.println("=========================================================================\n");
+				break;
+			case 9:
+				System.out.println("Opção escolhida 9 -> retornando ao menu principal...\n");
+				break;
+			default:
+				System.out.println("Opção escolhida inválida\n");
+				break;
+		}
 	}
 	
 	//Gerar arquivo (.csv)
@@ -40,8 +84,43 @@ public class Menu {
 	}
 	
 	//sair
-	public static void sub6() {
-		System.out.println("Em Desenvolvimento...");
+	public static int sub9(Scanner sc) {
+		System.out.println("============================== InteliFolha ==============================");
+		System.out.println("Deseja sair do programa?");
+		System.out.println("\nEscolha (0) para retornar ao Menu Principal");
+		System.out.println("Escolha (9) para confirmar");
+		int op = 1;
+		
+		while (op != 0 && op != 9) {
+			op = validaOp(sc);
+			if (op !=0 && op !=9) {
+				System.out.println("Opção escolhida Inválida");
+			}
+		} 
+		
+		if (op == 9) {
+			System.out.println("================= Programa IteliFolha encerrado =========================\n");
+		}else {
+			System.out.println("Opção escolhida 0 -> retornando ao menu principal...\n");
+		}
+		return op;
 	}
 	
+	//sair
+	public static int validaOp(Scanner sc) {
+		int op=0;//escolha para menus
+		boolean validacao = false;
+		System.out.println("Escolha uma opção: ");
+		while (validacao==false) {
+			try {
+				op = sc.nextInt();
+				validacao=true;
+			} catch (Exception e) {
+				System.out.println("Opção escolhida Inválida");
+				System.out.println("Digite apenas números");
+				sc.nextLine();//limpar buffer (evita loop continuo)
+			}
+		}
+		return op;
+	}
 }
