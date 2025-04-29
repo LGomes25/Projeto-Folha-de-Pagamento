@@ -3,6 +3,7 @@ package app;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import model.Dependente;
 import model.Funcionario;
@@ -33,8 +34,6 @@ public class RodaFolha {
 		List<Funcionario> funcs = new ArrayList<>();
 		List<Dependente> deps = new ArrayList<>();
 		
-		//chamada de menu
-		util.Menu.principal(); 
 		
 		//Carregar listas funcionario
 		funcs.add(fun1);
@@ -58,7 +57,69 @@ public class RodaFolha {
 //		}
 		
 //		System.out.println(fun1.comparaCpf(fun1)); <--verificar motivo pelo qual não funciona
+
+		
+		//Inicio de menu
+		
+		Scanner sc = new Scanner(System.in);
+		int op=0;//escolha para menus
+		boolean validacao = false;
+		
+		while (op!=9) {
+			util.Menu.principal(); //chama o menu pricipal
+			while (validacao==false) {
+				try {
+					op = sc.nextInt();
+					//sc.nextLine();// <-teste inicial ok verificar se pode ser removido
+					validacao=true;
+				} catch (Exception e) {
+					System.out.println("Opção escolhida Inválida");
+					System.out.println("Digite apenas números");
+					sc.nextLine();//limpar buffer (loop continuo)
+				}
+			}
+			validacao=false;
+			switch (op) {
+			case 1:
+				System.out.println("Teste 1");
+				break;
 				
+			case 2:
+				System.out.println("Teste 2");
+				break;
+				
+			case 3:
+				System.out.println("Teste 3");
+				break;
+				
+			case 4:
+				System.out.println("Teste 4");
+				break;
+				
+			case 5:
+				System.out.println("Teste 5");
+				break;
+				
+			case 9:
+				System.out.println("Teste 9");
+				break;
+				
+			default:
+				System.out.println("Opção escolhida inválida\n");
+				break;
+			}
+			
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		sc.close();
 	}
 
 }
