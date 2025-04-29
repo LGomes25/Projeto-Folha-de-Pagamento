@@ -1,9 +1,9 @@
 package util;
 
-import model.Funcionario;
+import model.Pessoa;
 
 public interface ValidaCpf{
 
-	String comparaCpf(Funcionario func);
+	String comparaCpf(Pessoa cpf);
 	
 }

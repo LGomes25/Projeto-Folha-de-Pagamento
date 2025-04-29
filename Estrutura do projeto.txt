@@ -1,0 +1,8 @@
+Folha Pagamento
+ 
+ ├── service       # Lógica de negócios e serviços
+ ├── repository    # Acesso a banco de dados (JPA, JDBC, DAOs)
+ ├── model         # Entidades e DTOs
+ ├── exception     # Tratamento de exceções
+ ├── config        # Configurações (Security, Beans, etc.)
+ ├── util          # Utilitários e classes auxiliares

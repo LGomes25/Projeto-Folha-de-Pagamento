@@ -1,10 +1,12 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import util.TipoDep;
+import util.ValidaDependente;
 
-public class Dependente extends Pessoa{
+public class Dependente extends Pessoa implements ValidaDependente{
 
 	//Atributos
 	private Integer id;
@@ -38,6 +40,23 @@ public class Dependente extends Pessoa{
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+	
+
+	//metodo interface Interface 
+	@Override
+	public String verificaIdade(Dependente dep) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	//Metodo Interface herança pessoa
+	@Override
+	public String comparaCpf(Pessoa cpfComp) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 	
