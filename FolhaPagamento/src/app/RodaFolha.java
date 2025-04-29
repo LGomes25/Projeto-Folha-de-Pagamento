@@ -33,6 +33,9 @@ public class RodaFolha {
 		List<Funcionario> funcs = new ArrayList<>();
 		List<Dependente> deps = new ArrayList<>();
 		
+		//chamada de menu
+		util.Menu.principal(); 
+		
 		//Carregar listas funcionario
 		funcs.add(fun1);
 		funcs.add(fun2);
@@ -50,9 +53,9 @@ public class RodaFolha {
 		deps.add(dep6);
 		
 		//apresentando os dados carregados chamada função compara cpf
-		for (Funcionario func : funcs) {
-			System.out.println(func.toString());
-		}
+//		for (Funcionario func : funcs) {
+//			System.out.println(func.toString());
+//		}
 		
 //		System.out.println(fun1.comparaCpf(fun1)); <--verificar motivo pelo qual não funciona
 				
