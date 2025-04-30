@@ -8,6 +8,7 @@ import java.util.Scanner;
 import model.Dependente;
 import model.Funcionario;
 import model.Pessoa;
+import service.FolhaPagamento;
 import util.TipoDep;
 
 public class RodaFolha {
@@ -35,14 +36,23 @@ public class RodaFolha {
 		List<Funcionario> funcs = new ArrayList<>();
 		List<Dependente> deps = new ArrayList<>();
 		List<Pessoa> pessoas = new ArrayList<>();
-		
+		List<FolhaPagamento> folhas = new ArrayList<>();
 		
 		//Carregar listas funcionario, dependente e pessoa
 		funcs.add(fun1); funcs.add(fun2); funcs.add(fun3); funcs.add(fun4); funcs.add(fun5); funcs.add(fun6); 
 		deps.add(dep1); deps.add(dep2); deps.add(dep3); deps.add(dep4); deps.add(dep5); deps.add(dep6); 
 		pessoas.add(fun1); pessoas.add(fun2); pessoas.add(fun3); pessoas.add(fun4); pessoas.add(fun5); pessoas.add(fun6);
 		pessoas.add(dep1);pessoas.add(dep2); pessoas.add(dep3); pessoas.add(dep4); pessoas.add(dep5); pessoas.add(dep6);
-
+		
+		//rodar folha
+		for (int i = 0; i < funcs.size(); i++) {
+			folhas.add(new FolhaPagamento(LocalDate.now(), funcs.get(i)));
+		}
+		for (FolhaPagamento f : folhas) {
+			System.out.println(f);
+		}
+		
+				
 		//		System.out.println(fun1.comparaCpf(fun1)); <--verificar motivo pelo qual não funciona
 		 
 		//Inicio de menu
@@ -57,11 +67,11 @@ public class RodaFolha {
 			
 			switch (op) {
 			case 1:
-				System.out.println("Teste 1");
+				System.out.println("Em desenvolvimento 1");
 				break;
 				
 			case 2:
-				System.out.println("Teste 2");
+				System.out.println("Em desenvolvimento 2");
 				break;
 				
 			case 3: //Chama o menu de listas
@@ -69,11 +79,11 @@ public class RodaFolha {
 				break;
 				
 			case 4:
-				System.out.println("Teste 4");
+				System.out.println("Em desenvolvimento 4");
 				break;
 				
 			case 5:
-				System.out.println("Teste 5");
+				System.out.println("Em desenvolvimento 5");
 				break;
 				
 			case 9: //encerra o programa amigavelmente

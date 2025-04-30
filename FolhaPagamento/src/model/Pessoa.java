@@ -7,6 +7,7 @@ import util.ValidaCpf;
 public abstract class Pessoa implements ValidaCpf {
 
 	//Atributos
+	protected Integer Id;
 	protected String nome;
 	protected String cpf;
 	protected LocalDate dtNasc;
