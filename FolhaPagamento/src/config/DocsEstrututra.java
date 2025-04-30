@@ -10,6 +10,7 @@ public class DocsEstrututra {
 	 * | ├── (DocsEstrututra)
 	 * |
 	 * ├── service       # Lógica de negócios e serviços
+	 * | ├──(FolhaPagamento)
 	 * |
 	 * ├── repository    # Acesso a banco de dados (JPA, JDBC, DAOs)
 	 * |
