@@ -10,6 +10,8 @@ import model.Funcionario;
 import model.Pessoa;
 import service.FolhaPagamento;
 import util.TipoDep;
+import util.InssDescEnum;
+import util.IrDescEnum;
 
 public class RodaFolha {
 
@@ -51,6 +53,13 @@ public class RodaFolha {
 		for (FolhaPagamento f : folhas) {
 			System.out.println(f);
 		}
+		
+		//Teste Enum Inss
+		System.out.println(((InssDescEnum.TETO.getMinSalFaixa()*InssDescEnum.TETO.getAliquotaInss())
+				>=InssDescEnum.DESCMAX.getDescMax())? InssDescEnum.DESCMAX.getDescMax() : "Valor conta");
+		
+		//Teste Enum Ir
+		System.out.println(IrDescEnum.FAIXA1.getSalMenorFaixa());
 		
 				
 		//		System.out.println(fun1.comparaCpf(fun1)); <--verificar motivo pelo qual não funciona
