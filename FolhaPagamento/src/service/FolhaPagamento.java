@@ -13,8 +13,8 @@ public class FolhaPagamento {
 	//Construtor
 	public FolhaPagamento(LocalDate dataPagamento, Funcionario funcionario) {
 		this.dataPagamento = dataPagamento;
-		this.salLiquido = 0.;
 		this.funcionario = funcionario;
+		this.salLiquido = funcionario.getSalarioBruto()-funcionario.getDescontoInss()-funcionario.getDescontoIR();
 	}
 
 	//toString
