@@ -10,20 +10,18 @@ import model.Funcionario;
 import model.Pessoa;
 import service.FolhaPagamento;
 import util.TipoDep;
-import util.InssDescEnum;
-import util.IrDescEnum;
 
 public class RodaFolha {
 
 	public static void main(String[] args) {
 
 		//Instanciamento de funcionarios
-		Funcionario fun1 = new Funcionario("Leonardo", "33344455567", LocalDate.of(2000, 2, 20), 4500.00);
-		Funcionario fun2 = new Funcionario("Mariana", "33344455569", LocalDate.of(1995, 5, 15), 5200.00);
-		Funcionario fun3 = new Funcionario("Carlos", "33344455569", LocalDate.of(1988, 10, 30), 6000.00);
-		Funcionario fun4 = new Funcionario("Ana", "44455566678", LocalDate.of(1992, 7, 8), 4800.00);
-		Funcionario fun5 = new Funcionario("Gabriel", "55566677781", LocalDate.of(2001, 12, 25), 4100.00);
-		Funcionario fun6 = new Funcionario("Jonas", "55566677780", LocalDate.of(2001, 11, 25), 4300.00);
+		Funcionario fun1 = new Funcionario("Leonardo", "33344455567", LocalDate.of(2000, 2, 20), 1500.00);
+		Funcionario fun2 = new Funcionario("Mariana", "33344455569", LocalDate.of(1995, 5, 15), 2500.00);
+		Funcionario fun3 = new Funcionario("Carlos", "33344455569", LocalDate.of(1988, 10, 30), 3500.00);
+		Funcionario fun4 = new Funcionario("Ana", "44455566678", LocalDate.of(1992, 7, 8), 4500.00);
+		Funcionario fun5 = new Funcionario("Gabriel", "55566677781", LocalDate.of(2001, 12, 25), 6000.00);
+		Funcionario fun6 = new Funcionario("Jonas", "55566677780", LocalDate.of(2001, 11, 25), 10000.00);
 		
 		//instanciamento dependentes
 		Dependente dep1 = new Dependente("José", "66655588812", LocalDate.of(2017, 02, 20), TipoDep.FILHO);
@@ -48,20 +46,14 @@ public class RodaFolha {
 		
 		//rodar folha
 		for (int i = 0; i < funcs.size(); i++) {
+			funcs.get(i).setDescontoInss(FolhaPagamento.calculaInss(funcs.get(i).getSalarioBruto()));
+			funcs.get(i).setDescontoIR(FolhaPagamento.calculaIr(funcs.get(i).getSalarioBruto(),funcs.get(i).getContDep()));
 			folhas.add(new FolhaPagamento(LocalDate.now(), funcs.get(i)));
 		}
 		for (FolhaPagamento f : folhas) {
 			System.out.println(f);
 		}
 		
-		//Teste Enum Inss
-		System.out.println(((InssDescEnum.TETO.getMinSalFaixa()*InssDescEnum.TETO.getAliquotaInss())
-				>=InssDescEnum.DESCMAX.getDescMax())? InssDescEnum.DESCMAX.getDescMax() : "Valor conta");
-		
-		//Teste Enum Ir
-		System.out.println(IrDescEnum.FAIXA1.getSalMenorFaixa());
-		
-				
 		//		System.out.println(fun1.comparaCpf(fun1)); <--verificar motivo pelo qual não funciona
 		 
 		//Inicio de menu
