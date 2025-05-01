@@ -1,7 +1,6 @@
 package model;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import util.TipoDep;
 import util.ValidaDependente;
