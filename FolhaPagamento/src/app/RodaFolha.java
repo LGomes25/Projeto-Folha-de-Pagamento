@@ -44,19 +44,16 @@ public class RodaFolha {
 		pessoas.add(fun1); pessoas.add(fun2); pessoas.add(fun3); pessoas.add(fun4); pessoas.add(fun5); pessoas.add(fun6);
 		pessoas.add(dep1);pessoas.add(dep2); pessoas.add(dep3); pessoas.add(dep4); pessoas.add(dep5); pessoas.add(dep6);
 		
-		//rodar folha
-		for (int i = 0; i < funcs.size(); i++) {
-			funcs.get(i).setDescontoInss(FolhaPagamento.calculaInss(funcs.get(i).getSalarioBruto()));
-			funcs.get(i).setDescontoIR(FolhaPagamento.calculaIr(funcs.get(i).getSalarioBruto(),funcs.get(i).getContDep()));
-			folhas.add(new FolhaPagamento(LocalDate.now(), funcs.get(i)));
-		}
-		for (FolhaPagamento f : folhas) {
-			System.out.println(f);
-		}
 		
-		//		System.out.println(fun1.comparaCpf(fun1)); <--verificar motivo pelo qual não funciona
-		 
-		//Inicio de menu
+//		Apresenta dados da folha condensada 
+//		for (FolhaPagamento f : folhas) {
+//			System.out.println(f);
+//		}
+		
+//		\/verificar motivo pelo qual não funciona\/
+//		System.out.println(fun1.comparaCpf(fun1)); 
+//		 
+//		Inicio de menu
 		
 		Scanner sc = new Scanner(System.in);
 		int op=0;//escolha para menus
@@ -75,18 +72,22 @@ public class RodaFolha {
 				System.out.println("Em desenvolvimento 2");
 				break;
 				
-			case 3: //Chama o menu de listas
-				util.Menu.sub3(sc, funcs, deps, pessoas);
+			case 3: // Executar Folha
+				util.Menu.sub3(sc, funcs, folhas);
 				break;
 				
-			case 4:
-				System.out.println("Em desenvolvimento 4");
+			case 4://Chama o menu de listas
+				util.Menu.sub4(sc, funcs, deps, pessoas);
 				break;
 				
 			case 5:
 				System.out.println("Em desenvolvimento 5");
 				break;
 				
+			case 6:
+				System.out.println("Em desenvolvimento 6");
+				break;
+
 			case 9: //encerra o programa amigavelmente
 				op = util.Menu.sub9(sc);
 				break;
@@ -97,13 +98,6 @@ public class RodaFolha {
 			}
 			
 		}
-	
-	
-	
-	
-	
-	
-	
 	
 	
 		sc.close();

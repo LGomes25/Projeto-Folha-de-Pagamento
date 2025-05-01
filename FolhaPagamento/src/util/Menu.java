@@ -1,11 +1,13 @@
 package util;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
 import model.Dependente;
 import model.Funcionario;
 import model.Pessoa;
+import service.FolhaPagamento;
 
 public class Menu {
 
@@ -13,9 +15,10 @@ public class Menu {
 		System.out.println("=============== InteliFolha ===============");
 		System.out.println("1 - Carregar arquivo externo (.csv)");
 		System.out.println("2 - Cadastrar novo Funcionário manualmente");
-		System.out.println("3 - Visualizar Listas");
-		System.out.println("4 - Gerar arquivo (.csv)");
-		System.out.println("5 - Enviar listas para Banco de Dados");
+		System.out.println("3 - Executar Folha");
+		System.out.println("4 - Visualizar Listas");
+		System.out.println("5 - Gerar arquivo (.csv)");
+		System.out.println("6 - Enviar listas para Banco de Dados");
 		System.out.println("9 - Sair");
 		System.out.println("===========================================");
 	}
@@ -30,8 +33,25 @@ public class Menu {
 		System.out.println("Em Desenvolvimento...");
 	}
 	
+	//Executar Folha
+	public static void sub3(Scanner sc, List<Funcionario> funcs, List<FolhaPagamento> folhas){
+		for (int i = 0; i < funcs.size(); i++) {
+			funcs.get(i).setDescontoInss(FolhaPagamento.calculaInss(funcs.get(i).getSalarioBruto()));
+			funcs.get(i).setDescontoIR(FolhaPagamento.calculaIr(funcs.get(i).getSalarioBruto(),funcs.get(i).getContDep()));
+			folhas.add(new FolhaPagamento(LocalDate.now(), funcs.get(i)));
+		}
+		System.out.println("Executando Folha.  .  .  .");
+		//Delay para esperar calculo.
+		try {
+			Thread.sleep(3000);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("\nFolha calculada com sucesso\n");
+	}
+	
 	//Visualizar istas
-	public static void sub3(Scanner sc, List<Funcionario> funcionarios, List<Dependente> dependentes, List<Pessoa> pessoas) {
+	public static void sub4(Scanner sc, List<Funcionario> funcionarios, List<Dependente> dependentes, List<Pessoa> pessoas) {
 		System.out.println("=============== InteliFolha ===============");
 		System.out.println("1 - Listar Funcionários");
 		System.out.println("2 - Listar Dependentes");
@@ -74,12 +94,12 @@ public class Menu {
 	}
 	
 	//Gerar arquivo (.csv)
-	public static void sub4() {
+	public static void sub5() {
 		System.out.println("Em Desenvolvimento...");
 	}
 	
 	//Enviar listas para Banco de Dados
-	public static void sub5() {
+	public static void sub6() {
 		System.out.println("Em Desenvolvimento...");
 	}
 	
