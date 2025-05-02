@@ -24,14 +24,15 @@ public class DocsEstrututra {
 	 * | ├──(Pessoa)			=> Objeto não instanciavel, SuperClass Abstract
 	 * |
 	 * |
-	 * ├── exception     # Tratamento de exceções
-	 * |
-	 * |
-	 * ├── config        # Configurações (Security, Beans, etc.)
+	 * ├── exception     		# Tratamento de exceções
+	 * | ├──(InvalidaData)		=> Critica datas erradas
+	 * | ├──(InvalidaCpf)		=> Critica CPF duplicado
+	 * | ├──(InvalidaDep)		=> Critica Dependentes com mais de 18anos
+	 * | ├──(InvalidaCaracter)	=> Critica Inserção de caracteres inválidos
 	 * |
 	 * |
 	 * ├── util          		# Utilitários e classes auxiliares						#
-	 * | ├──(Menu)				=> Métodos executáveis do menu (encapsulamento0
+	 * | ├──(Menu)				=> Métodos executáveis do menu (encapsulamento)
 	 * | ├──(TipoDep)			=> Enum de dependentes
 	 * | ├──(ValidaCpf)			=> Interface para validação de CPF
 	 * | ├──(ValidaDependente)	=> Interface para validação de idade de dependente
