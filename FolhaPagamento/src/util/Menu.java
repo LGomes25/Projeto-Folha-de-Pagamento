@@ -37,50 +37,85 @@ public class Menu {
 
 	// Executar Folha
 	public static void sub3(Scanner sc, List<Funcionario> funcs, List<FolhaPagamento> folhas) {
-		// Leitura Data
-		//int ano = 2025;
-//		int mes = 1;
-//		int dia = 1;
 		System.out.println("\nUsar data do Sistema (" + LocalDate.now() + ")?");
 		System.out.println("Digite 1 => data do Sistema");
-		System.out.println("Digite 0 => informar data manualmente");
+		System.out.println("Digite 2 => informar data manualmente");
+		data = LocalDate.now();
+		LocalDate testeData = LocalDate.now();
+		boolean validaData=false;
+		int op = 0;
+
+		// entrada de data
 		try {
-			int op = sc.nextInt();
-			if (op == 1) {
-				data = LocalDate.now();
-				System.out.println("Data do Sistema utilizada: " + data);
-			} else {
-				System.out.println("Informe o ano: ");
-				int ano = sc.nextInt();
-				System.out.println("Informe o mês: ");
-				int mes = sc.nextInt();
-				System.out.println("Informe o dia: ");
-				int dia = sc.nextInt();
-				data = LocalDate.of(ano, mes, dia);
-				System.out.println(String.format("Data informada: %d%d-%d",dia,mes,ano));
+			op = validaOp(sc);
+			switch (op) {
+				case 1:
+					System.out.println("Data do Sistema utilizada: " + data);
+					break;
+				case 2:
+					System.out.println("Informe o ano: ");
+					int ano = sc.nextInt();
+					System.out.println("Informe o mês: ");
+					int mes = sc.nextInt();
+					System.out.println("Informe o dia: ");
+					int dia = sc.nextInt();
+					data = LocalDate.of(ano, mes, dia);
+					System.out.println(String.format("\nData informada: %d-%d-%d", dia, mes, ano));
+					validaData=true;
+					break;
+				default:
+					System.out.println("\nOpção escolhida Inválida\nReinicie o Processo\n");
+					break;
 			}
-
+			//Verifica data com mais de 6 meses ou inválida
+			if (validaData) {
+				int x = 0, y = 0;
+				y = testeData.getYear() - data.getYear();
+				if (y == 1 || y == 0) {
+					if (y == 0) {
+						x = testeData.getDayOfYear() - data.getDayOfYear();
+						if (x < 0) {
+							System.out.println("\nData Inválida!!!\nFolha não calculada\n");
+							op =0;
+						}
+					} else {
+						x = testeData.getDayOfYear() + (366 - data.getDayOfYear());
+						System.out.println(x);
+						if (x > 183) {
+							System.out.println("\nData anterior a 6 meses ou Inválida!!!\nFolha não calculada\n");
+							op = 0;
+						}
+					}
+				}else {
+					System.out.println("\nData anterior a 6 meses ou Inválida!!!\nFolha não calculada\n");
+					op = 0;
+				}
+			}			
+			
 			// Rodar calculos
-			for (int i = 0; i < funcs.size(); i++) {
-				funcs.get(i).setDescontoInss(FolhaPagamento.calculaInss(funcs.get(i).getSalarioBruto()));
-				funcs.get(i).setDescontoIR(
-						FolhaPagamento.calculaIr(funcs.get(i).getSalarioBruto(), funcs.get(i).getContDep()));
-//			folhas.add(new FolhaPagamento(LocalDate.now(), funcs.get(i)));
-				folhas.add(new FolhaPagamento(data, funcs.get(i)));
+			if (op == 1 || op == 2) {
+
+				for (int i = 0; i < funcs.size(); i++) {
+					funcs.get(i).setDescontoInss(FolhaPagamento.calculaInss(funcs.get(i).getSalarioBruto()));
+					funcs.get(i).setDescontoIR(
+							FolhaPagamento.calculaIr(funcs.get(i).getSalarioBruto(), funcs.get(i).getContDep()));
+					folhas.add(new FolhaPagamento(data, funcs.get(i)));
+				}
+
+				// Delay para esperar calculo.
+				System.out.println("\nExecutando Folha.  .  .  .");
+				Thread.sleep(3000);// precisa estar dentro de um Try/Cath
+
+				// Apresenta dados da folha condensada
+				for (FolhaPagamento f : folhas) {
+					System.out.println(f);
+				}
+				System.out.println("\nFolha calculada com sucesso\n");
+
 			}
-
-			// Delay para esperar calculo.
-			System.out.println("\nExecutando Folha.  .  .  .");
-			Thread.sleep(3000);//precisa estar dentro de um Try/Cath
-
-			// Apresenta dados da folha condensada
-			for (FolhaPagamento f : folhas) {
-				System.out.println(f);
-			}
-			System.out.println("\nFolha calculada com sucesso\n");
-
 		} catch (Exception e) {
 			System.out.println("\nData inválida!!!\nFolha não calculada\n");
+
 		}
 	}
 
