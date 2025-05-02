@@ -1,35 +1,35 @@
 Folha Pagamento
  
   * | ├── app           	   	# Implementação de menu com chamadas de funcionalidades #
-	 * | ├── (RodaFolha)		      => Main class 
+	 * | ├── (RodaFolha)		=> Main class 
 	 * |
 	 * |
-	 * ├── config             		# Configurações (Security, Beans, etc.) 				#
+	 * ├── config             	# Configurações (Security, Beans, etc.) 		#
 	 * | ├── (DocsEstrututra)  	=> Armazena estrutura do projeto
 	 * |
 	 * |
-	 * ├── service            		# Lógica de negócios e serviços							#
+	 * ├── service            	# Lógica de negócios e serviços				#
 	 * | ├──(FolhaPagamento)   	=> Calculos das folhas de pagamento
 	 * |
 	 * |
-	 * ├── repository           # Acesso a banco de dados (JPA, JDBC, DAOs)
+	 * ├── repository               # Acesso a banco de dados (JPA, JDBC, DAOs)
 	 * |
 	 * |
-	 * ├── model       	      		# Entidades e DTOs										#
+	 * ├── model       	      	# Entidades e DTOs					#
 	 * | ├──(Dependente)	      	=> Objeto com informações sobre dependentes
 	 * | ├──(Funcionario)	     	=> Objeto com informações sobre Funcionarios
-	 * | ├──(Pessoa)			         => Objeto não instanciavel, SuperClass Abstract
+	 * | ├──(Pessoa)		=> Objeto não instanciavel, SuperClass Abstract
 	 * |
 	 * |
-	 * ├── exception     	     	# Tratamento de exceções
+	 * ├── exception     	     	# Tratamento de exceções				#
 	 * | ├──(InvalidaData)     	=> Critica datas erradas
 	 * | ├──(InvalidaCpf)	     	=> Critica CPF duplicado
 	 * | ├──(InvalidaDep)	     	=> Critica Dependentes com mais de 18anos
 	 * | ├──(InvalidaCaracter) 	=> Critica Inserção de caracteres inválidos
 	 * |
 	 * |
-	 * ├── util               		# Utilitários e classes auxiliares						#
-	 * | ├──(Menu)	          			=> Métodos executáveis do menu (encapsulamento)
-	 * | ├──(TipoDep)	        		=> Enum de dependentes
-	 * | ├──(ValidaCpf)		      	=> Interface para validação de CPF
-	 * | ├──(ValidaDependente)	 => Interface para validação de idade de dependente
+	 * ├── util               	# Utilitários e classes auxiliares			#
+	 * | ├──(Menu)	          	=> Métodos executáveis do menu (encapsulamento)
+	 * | ├──(TipoDep)	        => Enum de dependentes
+	 * | ├──(ValidaCpf)		=> Interface para validação de CPF
+	 * | ├──(ValidaDependente)	=> Interface para validação de idade de dependente
