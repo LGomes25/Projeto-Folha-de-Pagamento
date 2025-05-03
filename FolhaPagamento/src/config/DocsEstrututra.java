@@ -13,6 +13,7 @@ public class DocsEstrututra {
 	 * |
 	 * ├── service       		# Lógica de negócios e serviços							#
 	 * | ├──(FolhaPagamento)	=> Calculos das folhas de pagamento
+	 * | ├──(DataProcess)		=> Leitura e verificação de datas
 	 * |
 	 * |
 	 * ├── repository    # Acesso a banco de dados (JPA, JDBC, DAOs)
