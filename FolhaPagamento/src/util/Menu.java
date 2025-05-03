@@ -8,6 +8,7 @@ import model.Dependente;
 import model.Funcionario;
 import model.Pessoa;
 import service.FolhaPagamento;
+//import service.DateProcess;
 
 public class Menu {
 
@@ -41,59 +42,27 @@ public class Menu {
 		System.out.println("Digite 1 => data do Sistema");
 		System.out.println("Digite 2 => informar data manualmente");
 		data = LocalDate.now();
-		LocalDate testeData = LocalDate.now();
-		boolean validaData=false;
-		int op = 0;
+		boolean rodaFolha = false;
 
 		// entrada de data
 		try {
-			op = validaOp(sc);
+			int op = validaOp(sc);
 			switch (op) {
 				case 1:
 					System.out.println("Data do Sistema utilizada: " + data);
+					rodaFolha = true;
 					break;
 				case 2:
-					System.out.println("Informe o ano: ");
-					int ano = sc.nextInt();
-					System.out.println("Informe o mês: ");
-					int mes = sc.nextInt();
-					System.out.println("Informe o dia: ");
-					int dia = sc.nextInt();
-					data = LocalDate.of(ano, mes, dia);
-					System.out.println(String.format("\nData informada: %d-%d-%d", dia, mes, ano));
-					validaData=true;
+					data = service.DateProcess.dataInserir(sc); //Coleta data do console
+					rodaFolha = service.DateProcess.dataValidaFolha(data); //verifica data: > 6meses ou inválido
 					break;
 				default:
 					System.out.println("\nOpção escolhida Inválida\nReinicie o Processo\n");
 					break;
 			}
-			//Verifica data com mais de 6 meses ou inválida
-			if (validaData) {
-				int x = 0, y = 0;
-				y = testeData.getYear() - data.getYear();
-				if (y == 1 || y == 0) {
-					if (y == 0) {
-						x = testeData.getDayOfYear() - data.getDayOfYear();
-						if (x < 0) {
-							System.out.println("\nData Inválida!!!\nFolha não calculada\n");
-							op =0;
-						}
-					} else {
-						x = testeData.getDayOfYear() + (366 - data.getDayOfYear());
-						System.out.println(x);
-						if (x > 183) {
-							System.out.println("\nData anterior a 6 meses ou Inválida!!!\nFolha não calculada\n");
-							op = 0;
-						}
-					}
-				}else {
-					System.out.println("\nData anterior a 6 meses ou Inválida!!!\nFolha não calculada\n");
-					op = 0;
-				}
-			}			
-			
+
 			// Rodar calculos
-			if (op == 1 || op == 2) {
+			if (rodaFolha) {
 
 				for (int i = 0; i < funcs.size(); i++) {
 					funcs.get(i).setDescontoInss(FolhaPagamento.calculaInss(funcs.get(i).getSalarioBruto()));
@@ -117,10 +86,6 @@ public class Menu {
 			System.out.println("\nData inválida!!!\nFolha não calculada\n");
 
 		}
-	}
-
-	public Menu() {
-		super();
 	}
 
 	// Visualizar istas
