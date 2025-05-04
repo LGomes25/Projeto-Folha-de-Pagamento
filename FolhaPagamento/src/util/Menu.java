@@ -1,5 +1,6 @@
 package util;
 
+import java.io.FileReader;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
@@ -8,7 +9,6 @@ import model.Dependente;
 import model.Funcionario;
 import model.Pessoa;
 import service.FolhaPagamento;
-//import service.DateProcess;
 
 public class Menu {
 
@@ -26,9 +26,20 @@ public class Menu {
 		System.out.println("===========================================");
 	}
 
-	// Carregar arquivo externo (.csv)
-	public static void sub1() {
-		System.out.println("Em Desenvolvimento...");
+	// Leitura de arquivo externo (.csv)
+	public static FileReader sub1(Scanner sc, List<Funcionario> funcs) {
+		
+		FileReader file = null;//inicia variavel de arquivo nulo
+		try {
+			System.out.println("\nDigite o caminho do arquivo: ");
+			String nomeArquivo = sc.next();
+
+			file = new FileReader(nomeArquivo);//inicia arquivo
+			
+		} catch (Exception e) {
+			System.err.println("\nArquivo não encontrado!\n");//erro para caminho errado
+		}
+		return file;
 	}
 
 	// Cadastrar novo Funcionário manualmente
